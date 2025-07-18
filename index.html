@@ -107,7 +107,7 @@ https://templatemo.com/tm-580-woox-travel
       <input type="radio" id="banner4" class="sec-1-input" name="banner">
       <div class="slider">
         <div id="top-banner-1" class="banner">
-          <div class="banner-inner-wrapper header-text">
+          <div class="banner-inner-wrapper header-text" style="background: url('assets/images/b11.png') center center/cover no-repeat; min-height: 500px;">
             <div class="main-caption">
               <h2>Take a Glimpse Into The Beautiful Country Of:</h2>
               <h1>Caribbean</h1>
@@ -143,7 +143,7 @@ https://templatemo.com/tm-580-woox-travel
           </div>
         </div>
         <div id="top-banner-2" class="banner">
-          <div class="banner-inner-wrapper header-text">
+          <div class="banner-inner-wrapper header-text" style="background: url('assets/images/b12.png') center center/cover no-repeat; min-height: 500px;">
             <div class="main-caption">
               <h2>Take a Glimpse Into The Beautiful Country Of:</h2>
               <h1>Switzerland</h1>
@@ -179,7 +179,7 @@ https://templatemo.com/tm-580-woox-travel
           </div>
         </div>
         <div id="top-banner-3" class="banner">
-          <div class="banner-inner-wrapper header-text">
+          <div class="banner-inner-wrapper header-text" style="background: url('assets/images/b13.png') center center/cover no-repeat; min-height: 500px;">
             <div class="main-caption">
               <h2>Take a Glimpse Into The Beautiful Country Of:</h2>
               <h1>France</h1>
@@ -215,7 +215,7 @@ https://templatemo.com/tm-580-woox-travel
           </div>
         </div>
         <div id="top-banner-4" class="banner">
-          <div class="banner-inner-wrapper header-text">
+          <div class="banner-inner-wrapper header-text" style="background: url('assets/images/b14.png') center center/cover no-repeat; min-height: 500px;">
             <div class="main-caption">
               <h2>Take a Glimpse Into The Beautiful Country Of:</h2>
               <h1>Thailand</h1>
@@ -443,6 +443,11 @@ https://templatemo.com/tm-580-woox-travel
         document.getElementById('preloader-btn-en'),
         document.getElementById('preloader-btn-de')
       ];
+      // Wymuś widoczność preloadera na starcie, jeśli nie zamknięty
+      if(localStorage.getItem('preloaderClosed') !== '1' && preloader) {
+        preloader.style.display = 'flex';
+        preloader.style.opacity = '1';
+      }
 
       // Dodaj obsługę przycisku PL w menu
       var menuPL = document.getElementById('menu-preloader-btn-pl');

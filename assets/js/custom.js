@@ -28,11 +28,21 @@
 	  var box = $('.header-text').height();
 	  var header = $('header').height();
 
-	  if (scroll >= box - header) {
-		$("header").addClass("background-header");
-	  } else {
-		$("header").removeClass("background-header");
-	  }
+  if (scroll >= box - header) {
+	$("header").addClass("background-header");
+	if (window.innerWidth < 992) {
+	  $(".menu-trigger span, .menu-trigger span:before, .menu-trigger span:after").css("background-color", "#111"); // czarny hamburger na mobilu po scrolowaniu
+	} else {
+	  $("header, .header-area, .main-nav a, .main-nav li a").css("color", "#111"); // czarny tekst na desktopie po scrolowaniu
+	}
+  } else {
+	$("header").removeClass("background-header");
+	if (window.innerWidth < 992) {
+	  $(".menu-trigger span, .menu-trigger span:before, .menu-trigger span:after").css("background-color", ""); // domyślny kolor hamburgera na mobilu
+	} else {
+	  $("header, .header-area, .main-nav a, .main-nav li a").css("color", ""); // domyślny kolor tekstu na desktopie
+	}
+  }
 	});
 	
 	$('.filters ul li').click(function(){
