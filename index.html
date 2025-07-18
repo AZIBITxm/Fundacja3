@@ -33,12 +33,32 @@ https://templatemo.com/tm-580-woox-travel
 
   <!-- ***** Preloader Start ***** -->
   <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
+    <video autoplay muted playsinline id="preloader-bg-video" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+      <source src="assets/video/slonce.mp4" type="video/mp4">
+    </video>
+    <div class="preloader-inner" style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;">
+      <img id="preloader-logo" src="assets/images/logo.png" alt="Logo Fundacji" style="width:270px;height:auto;filter:drop-shadow(0 0 10px #fff);z-index:2;margin-top:calc(40vh - 135px);margin-left:18px;opacity:0;transition:opacity 4s cubic-bezier(0.4,0,0.2,1);">
+      <div style="position:absolute;left:50%;transform:translateX(-50%);bottom:10vh;display:flex;flex-direction:row;gap:18px;z-index:2;">
+        <button id="preloader-btn-pl" style="padding:10px 10px 6px 10px; border:none; background:transparent; color:#111; font-size:0.98em; cursor:pointer;box-shadow:none;display:flex;flex-direction:column;align-items:center;gap:4px;opacity:0;">
+          <img src="assets/images/flaga/pl.png" alt="Flaga Polski" style="width:34px;height:auto;margin-bottom:2px;filter:drop-shadow(0 0 4px #fff);">
+          <span style="display:block;font-size:0.98em;font-weight:500;letter-spacing:0.5px;color:#111;filter:drop-shadow(0 0 4px #fff);">PL</span>
+        </button>
+        <button id="preloader-btn-us" style="padding:10px 10px 6px 10px; border:none; background:transparent; color:#111; font-size:0.98em; cursor:pointer;box-shadow:none;display:flex;flex-direction:column;align-items:center;gap:4px;opacity:0;">
+          <img src="assets/images/flaga/us.png" alt="Flaga us" style="width:34px;height:auto;margin-bottom:2px;filter:drop-shadow(0 0 4px #fff);">
+          <span style="display:block;font-size:0.98em;font-weight:500;letter-spacing:0.5px;color:#111;filter:drop-shadow(0 0 4px #fff);">US</span>
+        </button>
+        <button id="preloader-btn-esp" style="padding:10px 10px 6px 10px; border:none; background:transparent; color:#111; font-size:0.98em; cursor:pointer;box-shadow:none;display:flex;flex-direction:column;align-items:center;gap:4px;opacity:0;">
+          <img src="assets/images/flaga/esp.png" alt="Flaga esp" style="width:34px;height:auto;margin-bottom:2px;filter:drop-shadow(0 0 4px #fff);">
+          <span style="display:block;font-size:0.98em;font-weight:500;letter-spacing:0.5px;color:#111;filter:drop-shadow(0 0 4px #fff);">ESP</span>
+        </button>
+        <button id="preloader-btn-en" style="padding:10px 10px 6px 10px; border:none; background:transparent; color:#111; font-size:0.98em; cursor:pointer;box-shadow:none;display:flex;flex-direction:column;align-items:center;gap:4px;opacity:0;">
+          <img src="assets/images/flaga/en.png" alt="Flaga en" style="width:34px;height:auto;margin-bottom:2px;filter:drop-shadow(0 0 4px #fff);">
+          <span style="display:block;font-size:0.98em;font-weight:500;letter-spacing:0.5px;color:#111;filter:drop-shadow(0 0 4px #fff);">EN</span>
+        </button>
+        <button id="preloader-btn-de" style="padding:10px 10px 6px 10px; border:none; background:transparent; color:#111; font-size:0.98em; cursor:pointer;box-shadow:none;display:flex;flex-direction:column;align-items:center;gap:4px;opacity:0;">
+          <img src="assets/images/flaga/de.png" alt="Flaga de" style="width:34px;height:auto;margin-bottom:2px;filter:drop-shadow(0 0 4px #fff);">
+          <span style="display:block;font-size:0.98em;font-weight:500;letter-spacing:0.5px;color:#111;filter:drop-shadow(0 0 4px #fff);">DE</span>
+        </button>
       </div>
     </div>
   </div>
@@ -52,7 +72,11 @@ https://templatemo.com/tm-580-woox-travel
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <a href="index.html" class="logo">
-                        <img src="assets/images/logo.png" alt="">
+                        <img src="assets/images/logo.png" alt="" style="vertical-align: middle; margin-top:-8px; filter: drop-shadow(0 2px 8px #fff) drop-shadow(0 0 2px #e8e7e7) drop-shadow(0 0 8px #ffffff);">
+                        <button id="menu-preloader-btn-pl" style="margin-left:18px;padding:4px 8px 2px 8px;border:none;background:transparent;cursor:pointer;display:inline-flex;flex-direction:column;align-items:center;gap:3px;">
+                          <img src="assets/images/flaga/pl.png" alt="Flaga Polski" style="width:28px;height:auto;filter:drop-shadow(0 0 3px #fff);">
+                          <span style="display:block;font-size:0.85em;font-weight:500;letter-spacing:0.5px;color:#111;filter:drop-shadow(0 0 3px #fff);">PL</span>
+                        </button>
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
@@ -408,6 +432,70 @@ https://templatemo.com/tm-580-woox-travel
   <script src="assets/js/custom.js"></script>
 
   <script>
+    // Animacja preloadera: najpierw przyciski, potem logo, tylko przy pierwszym wejściu
+    document.addEventListener('DOMContentLoaded', function() {
+      var preloader = document.getElementById('js-preloader');
+      var logo = document.getElementById('preloader-logo');
+      var btns = [
+        document.getElementById('preloader-btn-pl'),
+        document.getElementById('preloader-btn-us'),
+        document.getElementById('preloader-btn-esp'),
+        document.getElementById('preloader-btn-en'),
+        document.getElementById('preloader-btn-de')
+      ];
+
+      // Dodaj obsługę przycisku PL w menu
+      var menuPL = document.getElementById('menu-preloader-btn-pl');
+      if(menuPL) {
+        menuPL.addEventListener('click', function() {
+          localStorage.removeItem('preloaderClosed');
+          window.location.reload();
+        });
+      }
+
+      // Sprawdź, czy preloader był już zamknięty
+      if(localStorage.getItem('preloaderClosed') === '1') {
+        if(preloader) preloader.style.display = 'none';
+        if(logo) logo.style.opacity = '1';
+        btns.forEach(function(btn){ if(btn) btn.style.opacity = '1'; });
+        return;
+      }
+
+      // Ustaw transition tylko na logo (przyciski pojawiają się natychmiast)
+      btns.forEach(function(btn) {
+        if(btn) btn.style.transition = '';
+      });
+      if(logo) logo.style.transition = 'opacity 4s cubic-bezier(0.4,0,0.2,1)';
+
+      // Najpierw pojawiają się przyciski, potem logo
+      setTimeout(function() {
+        btns.forEach(function(btn, i) {
+          setTimeout(function() {
+            if(btn) btn.style.opacity = '1';
+            // Po ostatnim przycisku pojawia się logo
+            if(i === btns.length-1 && logo) {
+              setTimeout(function() {
+                logo.style.opacity = '1';
+              }, 500); // logo pojawia się 0.5s po ostatnim przycisku
+            }
+          }, i*400);
+        });
+      }, 1000);
+
+      // Obsługa zamykania preloadera na kliknięcie PL
+      var btnPL = document.getElementById('preloader-btn-pl');
+      if(btnPL && preloader) {
+        btnPL.addEventListener('click', function() {
+          preloader.style.opacity = '0';
+          setTimeout(function(){
+            preloader.style.display = 'none';
+            localStorage.setItem('preloaderClosed', '1');
+            // window.location.href = 'index.html'; // jeśli chcesz przeładować
+          }, 500);
+        });
+      }
+    });
+
     function bannerSwitcher() {
       next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
       if (next.length) next.prop('checked', true);
