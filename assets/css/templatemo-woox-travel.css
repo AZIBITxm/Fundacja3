@@ -1,7 +1,3 @@
-/* Cień pod napisami w banerze głównym */
-.main-caption h1, .main-caption h2 {
-  text-shadow: 0 2px 12px rgba(0,0,0,0.38), 0 1px 2px rgba(0,0,0,0.22);
-}
 @media (max-width: 991px) {
   .background-header .main-nav .menu-trigger.active span {
     background-color: transparent !important;
@@ -158,10 +154,10 @@ body {
   margin-left: 10px;
 }
 
-.border-button a {
+ .border-button a {
   font-size: 14px;
   color: #79b0dd;
-  background-color: transparent;
+  background-color: rgba(0,0,0,0.3);
   border: 1px solid #79b0dd;
   padding: 12px 30px;
   display: inline-block;
